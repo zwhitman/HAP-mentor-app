@@ -1,0 +1,77 @@
+html,body{
+    height:100%;
+    width:100%;
+}
+
+#loader {
+    position:fixed;
+    /*background:url(../images/loader.png) no-repeat center center;*/
+    height:100vh;
+    width:100vw;
+    background:white;
+    z-index:99999999999;
+}
+
+#loaderIMG {
+    position:fixed;
+    background:url(../images/loader.png) no-repeat center center;
+    height:100vh;
+    width:100vw;
+    z-index:99999999999;
+}
+
+#demoBox,
+#poiBox{
+    padding:5px;
+    background-color: lightgrey;
+    height:100%;
+    display:none;
+}
+
+.mapcontain {
+    padding:0;
+    height:100%;
+}
+
+#map {
+    /*position: absolute;*/
+    height:100%;
+    width:100%;
+}
+
+#sideRight {
+    position:fixed;
+    right:-300px;
+    top:0;
+    width:300px;
+    height:100vh;
+    background-color:rgba(255,255,255,.9);
+    -webkit-transition: right .3s; /* Safari */
+    transition: right .3s;
+}
+
+#sRX {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+
+#sRImg {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:-1;
+}
+
+#sideRTitle {
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
+#sideRContentContain{
+    position: absolute;
+    top:160px;
+}
+#sideRContent {
+}

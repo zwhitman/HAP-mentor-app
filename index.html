@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--jquery-->
+    <script src="js/jquery.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--mapbox-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!--custom stylesheet-->
+    <link rel="stylesheet" href="css/mapStyle.css">
+
+
+</head>
+<body>
+<div id="loader">
+    <div id="loaderIMG"></div>
+</div>
+<div class="hidden-xs col-sm-3 col-lg-2 sidebar text-center">
+    <h1>higher achievement</h1>
+    <hr>
+    <button class="btn btn-default btn-block" onclick="$('#demoBox').slideToggle()">Demographics</button>
+    <div class="col-xs-12" id="demoBox">
+        <select id="eth"></select>
+        <select id="age"></select>
+        <select id="inc"></select>
+    </div>
+    <button class="btn btn-default btn-block" onclick="$('#poiBox').slideToggle()">Points of Interest</button>
+    <div class="col-xs-12" id="poiBox">
+        <select id="poi"></select>
+        <select id="wards"></select>
+        <!--<select id=""></select>-->
+    </div>
+    <button id='goBtn' class="btn btn-success btn-block">Go</button>
+
+</div>
+<div class="col-xs-12 col-sm-9 col-lg-10 mapcontain">
+        <div id='map'></div>
+</div>
+<div id="sideRight" class="text-center">
+    <div class="col-xs-12">
+        <h3 id="sideRTitle">Test</h3>
+    </div>
+    <div id="sideRContentContain">
+        <div id="sideRContent" class="col-xs-12 text-left"></div>
+    </div>
+    <img id="sRImg">
+    <button id="sRX" class="btn btn-danger" onclick="$('#sideRight').css('right','-300px')"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+</div>
+
+
+<script type="text/javascript" src="js/selectize.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/selectize.css">
+<!--custom map script-->
+<script src='js/mapscript.js'></script>
+</body>
+</html>
