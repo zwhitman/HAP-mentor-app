@@ -117,7 +117,7 @@ function Query (eth, age, inc, poi) {
 
 function renderSide(lat,lng){
     var googleK = 'AIzaSyDTt2wHwHjSlAd14BarF95r7GCfxPUKD84',
-        gooURL = 'https://maps.googleapis.com/maps/api/streetview?size=300x150&location='+lat+','+lng+'&key='+googleK;
+        gooURL = 'https://maps.googleapis.com/maps/api/streetview?size=500x150&location='+lat+','+lng+'&key='+googleK;
     $('#sRImg').attr('src',gooURL)
 }
 
@@ -165,9 +165,6 @@ $( "#goBtn" ).click(function() {
         });
         map.on('click', function (e) {
             $('#sideRContent').empty();
-
-
-
             var clusterFeatures = map.queryRenderedFeatures(e.point, { layers: ['worship_cluster'] });
             var features = map.queryRenderedFeatures(e.point, { layers: ['worship'] });
 
@@ -176,7 +173,7 @@ $( "#goBtn" ).click(function() {
             }
 
             if (clusterFeatures.length>0){
-                $("#sideRight").css("right","-300px");
+                $("#sideRight").css("right","-500px");
                 map.flyTo({
                     center: [e.lngLat.lng, e.lngLat.lat],
                     zoom: map.style.z+1
@@ -198,7 +195,127 @@ $( "#goBtn" ).click(function() {
                     "<li><a href='"+feature.properties.WEB_URL+"' target='_blank'>Website</a></li>" +
                     "</ul>");
                 renderSide(feature.geometry.coordinates[1],feature.geometry.coordinates[0])
+                console.log(feature.geometry.coordinates[1],feature.geometry.coordinates[0])
             }
+
+            var lat = feature.geometry.coordinates[1],
+                lng = feature.geometry.coordinates[0];
+
+
+            var baseURL = 'https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/ACS_5_Year_Socioeconomic_Data_By_Tract_As_of_2012/FeatureServer/0/query?where=STATE+%3D+%2711%27&objectIds=&time=&geometry=%7B%22x%22%3A'+lng+'%2C%22y%22%3A'+lat+'%7D%0D%0A+&geometryType=esriGeometryPoint&inSR=%7B%22wkid%22+%3A+4326%7D&spatialRel=esriSpatialRelIntersects&resultType=none&distance=&units=esriSRUnit_Meter&outFields=*&returnGeometry=true&returnCentroid=false&multipatchOption=&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&quantizationParameters=&f=pgeojson&token='
+
+            $.getJSON( baseURL, function( data ) {
+                console.log(data.features[0].properties);
+                $('#socio').empty();
+                var shead = ['<tr><th>Field</th><th>Description</th></tr>'];
+                var sdata = [];
+                //travel vars
+                var tLook = ["B08303_30MINUS_TTW","B08303_30TO59_TTW","B08303_60PLUS_TTW"];
+                var travel = [];
+                // poverty vars
+                //var pLook = ["B08303_30MINUS_TTW","B08303_30TO59_TTW","B08303_60PLUS_TTW"];
+                var pLook = ["B19001_LT15","B19001_15TO25","B19001_25TO35","B19001_35TO45","B19001_45TO60","B19001EST12","B19001EST13","B19001EST14","B19001EST15","B19001_GT150"]
+                var poverty = [];
+                // education vars
+                var eLook = ["B20004EST2","B20004EST3","B20004EST4","B20004EST5","B20004EST6"];
+                var education = [];
+
+                $.each(data.features[0].properties,function(index, value) {
+                    $.each(socio,function(si, sv) {
+                        if(socio[si].Field==index){
+                            //sdata.push("<li>" + socio[si].Alias+" = "+ value + "</li>")
+                            sdata.push("<tr><td>" + socio[si].Alias+"</td><td>"+ value + "</td></tr>")
+                            if($.inArray(socio[si].Field, tLook) > -1){
+                                travel.push({"groups":socio[si].Alias, "name": "Workers", "total count":value})
+                            }
+                            if($.inArray(socio[si].Field, pLook) > -1){
+                                poverty.push({"groups":socio[si].Alias, "name": "Workers", "total count":value})
+                            }
+                            if($.inArray(socio[si].Field, eLook) > -1){
+                                education.push({"groups":socio[si].Alias, "name": "Residents", "total count":value})
+                            }
+                        }
+                    });
+                });
+                $( "<thead/>", {
+                    "class": "socioTable",
+                    html: shead.join( "" )
+                }).appendTo( "#socio" );
+                $( "<tbody/>", {
+                    "class": "socioTable",
+                    html: sdata.join( "" )
+                }).appendTo( "#socio" );
+
+                visualization.data(travel).draw();
+                eduVisualization.data(education).draw();
+                povVisualization.data(poverty).draw();
+            });
+
+
+            var demoURL = 'https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/ACS_5_Year_Demographic_Data_by_Tract_as_of_2012/FeatureServer/0/query?where=STATE+%3D+%2711%27&objectIds=&time=&geometry=%7B%22x%22%3A'+lng+'%2C%22y%22%3A'+lat+'%7D%0D%0A+&geometryType=esriGeometryPoint&inSR=%7B%22wkid%22+%3A+4326%7D&spatialRel=esriSpatialRelIntersects&resultType=none&distance=&units=esriSRUnit_Meter&outFields=*&returnGeometry=true&returnCentroid=false&multipatchOption=&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&quantizationParameters=&f=pgeojson&token='
+
+            $.getJSON( demoURL, function( data ) {
+                $('#socio').empty();
+                var ddata = [];
+                //age vars
+                var aLook = ["AGE_18TO24","AGE_25TO34","AGE_35TO44","AGE_45TO64","AGE_65UP"];
+                var ages = [];
+
+                //ethnicity
+                var eLook = ["B03002EST3","B03002EST4","B03002EST5","B03002EST6","B03002EST7","B03002EST8","B03002EST12","B03002TMNH"];
+                var binArray = ["B03002EST5","B03002EST7","B03002EST8","B03002TMNH"]
+                var binCount = 0;
+                var ethnicity = [];
+
+
+                //{"Field":"AGE_18TO24","Alias":"Population Ages 18 to 24"},
+                //{"Field":"AGE_25TO34","Alias":"Population Ages 25 to 34"},
+                //{"Field":"AGE_35TO44","Alias":"Population Ages 35 to 44"},
+                //{"Field":"AGE_45TO64","Alias":"Population Ages 45 to 64"},
+                //{"Field":"AGE_65UP","Alias":"Population Ages 65 and older"},
+                ////travel vars
+                //var tLook = ["B08303_30MINUS_TTW","B08303_30TO59_TTW","B08303_60PLUS_TTW"];
+                //var travel = [];
+                //// poverty vars
+                ////var pLook = ["B08303_30MINUS_TTW","B08303_30TO59_TTW","B08303_60PLUS_TTW"];
+                //var pLook = ["B19001_LT15","B19001_15TO25","B19001_25TO35","B19001_35TO45","B19001_45TO60","B19001EST12","B19001EST13","B19001EST14","B19001EST15","B19001_GT150"]
+                //var poverty = [];
+                //// education vars
+                //var eLook = ["B20004EST2","B20004EST3","B20004EST4","B20004EST5","B20004EST6"];
+                //var education = [];
+
+                $.each(data.features[0].properties,function(index, value) {
+                    $.each(demo,function(si, sv) {
+                        if(demo[si].Field==index){
+                            ddata.push("<li>" + demo[si].Alias+" = "+ value + "</li>")
+                            if($.inArray(demo[si].Field, aLook) > -1){
+                                ages.push({"groups":demo[si].Alias, "name": "Population", "total count":value})
+                            }
+                            if($.inArray(demo[si].Field, eLook) > -1){
+                                if($.inArray(demo[si].Field, binArray) > -1){
+                                    binCount = binCount + value
+
+                                } else {
+                                    ethnicity.push({"groups":demo[si].Alias, "name": "Population", "total count":value})
+                                }
+
+                            }
+                            //if($.inArray(socio[si].Field, eLook) > -1){
+                            //    education.push({"groups":socio[si].Alias, "name": "Residents", "total count":value})
+                            //}
+                        }
+                    });
+                });
+                ethnicity.push({"groups":"Other", "name": "Population", "total count":binCount})
+                //$( "<ul/>", {
+                //    "class": "my-new-list",
+                //    html: ddata.join( "" )
+                //}).appendTo( "#demo" );
+                ageVisualization.data(ages).draw();
+                ethVisualization.data(ethnicity).draw();
+                //eduVisualization.data(education).draw();
+                //povVisualization.data(poverty).draw();
+            });
 
 
             //var popup = new mapboxgl.Popup()
@@ -218,6 +335,86 @@ $( "#goBtn" ).click(function() {
 
 });
 
+
+//travel graph
+var travel = [
+    {"groups": "1", "name":"alpha", "total count": 15}
+];
+var visualization = d3plus.viz()
+    .container("#viz")
+    .data(travel)
+    .type("bar")
+    .order({
+        "value":"name"
+    })
+    .id("name")
+    .x("groups")
+    .y("total count")
+    .background("rgba(0,0,0,0)")
+
+var education = [
+    {"groups": "1", "name":"alpha", "total count": 15}
+];
+var eduVisualization = d3plus.viz()
+    .container("#vizEDU")
+    .data(education)
+    .type("bar")
+    .order({
+        "value":"name"
+    })
+    .id("name")
+    .x("groups")
+    .y("total count")
+    .background("rgba(0,0,0,0)")
+    //.draw()
+
+var poverty = [
+    {"groups": "1", "name":"alpha", "total count": 15}
+];
+var povVisualization = d3plus.viz()
+    .container("#vizPOV")
+    .data(poverty)
+    .type("bar")
+    .order({
+        "value":"name"
+    })
+    .id("name")
+    .x("groups")
+    .y("total count")
+    .background("rgba(0,0,0,0)")
+//.draw()
+
+var ages = [
+    {"groups": "1", "name":"alpha", "total count": 15}
+];
+var ageVisualization = d3plus.viz()
+    .container("#vizAGE")
+    .data(ages)
+    .type("bar")
+    .order({
+        "value":"name"
+    })
+    .id("name")
+    .x("groups")
+    .y("total count")
+    .background("rgba(0,0,0,0)")
+//.draw()
+
+var ethnicity = [
+    {"groups": "1", "name":"alpha", "total count": 15}
+];
+var ethVisualization = d3plus.viz()
+    .container("#vizETH")
+    .data(ethnicity)
+    .type("bar")
+    .order({
+        "value":"name"
+    })
+    .id("name")
+    .x("groups")
+    .y("total count")
+    .background("rgba(0,0,0,0)")
+//.draw()
 
 
 map.on('load', function () {

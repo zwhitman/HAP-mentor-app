@@ -51,14 +51,85 @@
     </div>
     <div id="sideRContentContain">
         <div id="sideRContent" class="col-xs-12 text-left"></div>
+        <div id="recContent"></div>
+        <hr style="width:100%">
+        <h3>Recommendation</h3>
+        <hr style="width:100%">
+        <h3>Census Data</h3>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">SocioEconomic</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Demographics</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Data Table</a></li>
+            <!--<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>-->
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active fade in" id="home">
+                <h4>Commute Times</h4>
+                <div id="viz" style="height:300px;opacity:.9"></div>
+
+                <h4>Level of Education</h4>
+                <div id="vizEDU" style="height:300px;opacity:.9"></div>
+
+                <h4>Income</h4>
+                <div id="vizPOV" style="height:300px;opacity:.9"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="profile">
+                <div id="demo" class="col-xs-12 text-left"></div>
+                <h4>Ethnicity</h4>
+                <div id="vizETH" style="height:300px;opacity:.9"></div>
+                <h4>Age Groups</h4>
+                <div id="vizAGE" style="height:300px;opacity:.9"></div>
+                <!--<div id="socio" class="col-xs-12 text-left"></div>-->
+            </div>
+            <div role="tabpane2" class="tab-pane fade" id="messages">
+                <div id="socioContain" class="col-xs-12 text-left">
+                    <table id="socio" class="table table-responsive">
+                        <!--<thead><tr><th>Field</th><th>Description</th></tr></thead>-->
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--<div id="viz2" style="height:300px"></div>-->
     </div>
     <img id="sRImg">
-    <button id="sRX" class="btn btn-danger" onclick="$('#sideRight').css('right','-300px')"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+    <button id="sRX" class="btn btn-danger" onclick="$('#sideRight').css('right','-500px')"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+
+    <div>
+
+
+    </div>
 </div>
 
+<!--tab script-->
+<script>
+    $('#myTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
 
+    $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+    $('#myTabs a:first').tab('show') // Select first tab
+    $('#myTabs a:last').tab('show') // Select last tab
+    $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+
+</script>
+
+<!--selectize-->
 <script type="text/javascript" src="js/selectize.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/selectize.css">
+
+<!--d3/d3plus-->
+<script type="text/javascript" src="js/d3.min.js"></script>
+<script type="text/javascript" src="js/d3plus.min.js"></script>
+
+<!--reference tables-->
+<script src='data/socio_lookup.js'></script> <!--var = socio -->
+<script src='data/demo_lookup.js'></script> <!--var = demo -->
+<script src='data/test1.js'></script> <!--var = socio -->
+
 <!--custom map script-->
 <script src='js/mapscript.js'></script>
 </body>
