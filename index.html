@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Higher Achievement App</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
     <!--jquery-->
     <script src="js/jquery.min.js"></script>
@@ -15,8 +19,18 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
 
+    <!--pace-->
+    <script src="js/pace.js"></script>
+
+    <link rel="stylesheet" href="css/material.min.css">
+    <script src="js/material.min.js"></script>
+
+    <!--font-->
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+
     <!--custom stylesheet-->
     <link rel="stylesheet" href="css/mapStyle.css">
+
 
 
 </head>
@@ -24,78 +38,168 @@
 <div id="loader">
     <div id="loaderIMG"></div>
 </div>
-<div class="hidden-xs col-sm-3 col-lg-2 sidebar text-center">
-    <h1>higher achievement</h1>
-    <hr>
-    <button class="btn btn-default btn-block" onclick="$('#demoBox').slideToggle()">Demographics</button>
-    <div class="col-xs-12" id="demoBox">
-        <select id="eth"></select>
-        <select id="age"></select>
-        <select id="inc"></select>
+<div style='width:400px;position:absolute;left:0;padding:20px' class="sidebar text-center">
+    <img class='img img-responsive' src="images/logo.png">
+    <!--<h1>higher achievement</h1>-->
+    <br>
+    <div class="demo-card-wide mdl-shadow--2dp" id="intro" style="width:100%">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Welcome!</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            This is Higher Achievement's mentor finder application. It's designed to help you figure out where to canvas
+            and recruit new mentors.
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="$('#intro').slideUp()">
+                GOT IT
+            </a>
+        </div>
+        <!--<div class="mdl-card__menu">-->
+            <!--<button class="mdl-button mdl-button&#45;&#45;icon mdl-js-button mdl-js-ripple-effect">-->
+                <!--<i class="material-icons">share</i>-->
+            <!--</button>-->
+        <!--</div>-->
     </div>
-    <button class="btn btn-default btn-block" onclick="$('#poiBox').slideToggle()">Points of Interest</button>
-    <div class="col-xs-12" id="poiBox">
-        <select id="poi"></select>
-        <select id="wards"></select>
+    <br>
+    <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+        <button class="btn btn-default btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " onclick="$('#demoBox').slideToggle()">Demographics</button>
+        <div id="demoBox" class="mdl-card__supporting-text" style="width:100%">
+            <select id="gen"></select>
+            <select id="eth"></select>
+            <select id="age"></select>
+        </div>
+    </div>
+    <br>
+    <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+        <button class="btn btn-default btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " onclick="$('#poiBox').slideToggle()">Points of Interest</button>
+    <!--<div class="col-xs-12" id="poiBox">-->
+        <div id="poiBox" class="mdl-card__supporting-text" style="width:100%">
+            <select id="poi"></select>
+            <select id="wards"></select>
+        </div>
         <!--<select id=""></select>-->
     </div>
-    <button id='goBtn' class="btn btn-success btn-block">Go</button>
+    <br>
+    <div class="demo-card-wide mdl-shadow--2dp text-left" style="width:100%">
+        <button class="btn btn-default btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent " onclick="$('#needBox').slideToggle()">Scholars & Mentors</button>
+        <div id="needBox" class="mdl-card__supporting-text" style="width:100%">
+    <!--<div class="col-xs-12 text-left" id="needBox">-->
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="menCheck">
+                <input id="menCheck" type="checkbox" class="mdl-checkbox__input">
+                <span class="mdl-checkbox__label">High Mentor Densities</span>
+            </label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="schCheck">
+                <input id="schCheck" type="checkbox" class="mdl-checkbox__input">
+                <span class="mdl-checkbox__label">High Scholar Densities</span>
+            </label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="highCheck">
+                <input id="highCheck" type="checkbox" class="mdl-checkbox__input">
+                <span class="mdl-checkbox__label">Areas of High Mentor Demand</span>
+            </label>
+        </div>
+    </div>
+    <br>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <button id='goBtn' style="width:70%;border-radius:0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Go</button>
+        <button id='clearBtn' style="width:30%;border-radius:0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Clear</button>
+    </div>
 
 </div>
-<div class="col-xs-12 col-sm-9 col-lg-10 mapcontain">
+<div style="width:calc(100vw - 400px);position:fixed;left:400px" class="mapcontain">
         <div id='map'></div>
 </div>
-<div id="sideRight" class="text-center">
+<div id="sideRight" class="text-center" style="padding:10px">
     <div class="col-xs-12">
-        <h3 id="sideRTitle">Test</h3>
+        <h3 id="sideRTitle"></h3>
     </div>
     <div id="sideRContentContain">
-        <div id="sideRContent" class="col-xs-12 text-left"></div>
+        <div id="sideRContentWrap" class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Additional Info</h2>
+            </div>
+            <div id="sideRContent" class="mdl-card__supporting-text" style="width:100%">
+            <!--<div id="sideRContent" class="text-left demo-card-wide mdl-shadow&#45;&#45;2dp"></div>-->
+            </div>
+        </div>
+
         <div id="recContent"></div>
-        <hr style="width:100%">
-        <h3>Recommendation</h3>
-        <hr style="width:100%">
+        <br>
+        <!--<hr style="width:100%">-->
+        <!--<h3>Recommendation</h3>-->
+        <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Recommendations</h2>
+            </div>
+            <div id="recs" class="mdl-card__supporting-text text-left" style="width:100%">
+                <!--<div id="sideRContent" class="text-left demo-card-wide mdl-shadow&#45;&#45;2dp"></div>-->
+            </div>
+        </div>
+        <br>
         <h3>Census Data</h3>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">SocioEconomic</a></li>
             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Demographics</a></li>
-            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Data Table</a></li>
+            <!--<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Data Table</a></li>-->
             <!--<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>-->
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active fade in" id="home">
-                <h4>Commute Times</h4>
-                <div id="viz" style="height:300px;opacity:.9"></div>
-
-                <h4>Level of Education</h4>
-                <div id="vizEDU" style="height:300px;opacity:.9"></div>
-
-                <h4>Income</h4>
-                <div id="vizPOV" style="height:300px;opacity:.9"></div>
+                <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Commute Times</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text" style="width:100%">
+                        <div id="chComm" style="height:300px"></div>
+                    </div>
+                </div>
+                <br>
+                <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Level of Education</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text" style="width:100%">
+                        <div id="chEdu" style="height:300px"></div>
+                    </div>
+                </div>
+                <br>
+                <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Household Income</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text" style="width:100%">
+                        <div id="chPov" style="height:300px"></div>
+                    </div>
+                </div>
+                <br>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="profile">
-                <div id="demo" class="col-xs-12 text-left"></div>
-                <h4>Ethnicity</h4>
-                <div id="vizETH" style="height:300px;opacity:.9"></div>
-                <h4>Age Groups</h4>
-                <div id="vizAGE" style="height:300px;opacity:.9"></div>
-                <!--<div id="socio" class="col-xs-12 text-left"></div>-->
-            </div>
-            <div role="tabpane2" class="tab-pane fade" id="messages">
-                <div id="socioContain" class="col-xs-12 text-left">
-                    <table id="socio" class="table table-responsive">
-                        <!--<thead><tr><th>Field</th><th>Description</th></tr></thead>-->
-                    </table>
+                <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Ethnicity</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text" style="width:100%">
+                        <div id="chEth" style="height:300px"></div>
+                    </div>
                 </div>
+                <br>
+                <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Age Groups</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text" style="width:100%">
+                        <div id="chAge" style="height:300px"></div>
+                    </div>
+                </div>
+                <br>
             </div>
         </div>
-        <!--<div id="viz2" style="height:300px"></div>-->
     </div>
     <img id="sRImg">
-    <button id="sRX" class="btn btn-danger" onclick="$('#sideRight').css('right','-500px')"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+    <button id="sRX" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="$('#sideRight').css('right','-500px')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 
     <div>
 
@@ -122,7 +226,9 @@
 <link rel="stylesheet" type="text/css" href="css/selectize.css">
 
 <!--d3/d3plus-->
+<link rel="stylesheet" type="text/css" href="css/c3.min.css">
 <script type="text/javascript" src="js/d3.min.js"></script>
+<script type="text/javascript" src="js/c3.min.js"></script>
 <script type="text/javascript" src="js/d3plus.min.js"></script>
 
 <!--reference tables-->
