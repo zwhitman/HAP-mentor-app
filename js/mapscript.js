@@ -148,6 +148,7 @@ function renderSide(lat,lng){
 function clear(){
     if(map.getLayer('worship') != null) {
         $("#sideRight").css("right", "-500px");
+        $('#sideRContent').empty()
         map.removeLayer('worship')
         map.removeLayer('worship_cluster')
         map.removeSource('worship')
