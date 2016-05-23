@@ -500,15 +500,24 @@ $( "#goBtn" ).click(function() {
                 var shead = ['<tr><th>Field</th><th>Description</th></tr>'];
                 var sdata = [];
                 //travel vars
-                var tLook = ["B08303_30MINUS_TTW","B08303_30TO59_TTW","B08303_60PLUS_TTW"];
+                var tLook = ["B08303_30MINUS_TTW_PCT","B08303_30TO59_TTW_PCT","B08303_60PLUS_TTW_PCT"];
                 var travel = [];
                 // poverty vars
                 //var pLook = ["B08303_30MINUS_TTW","B08303_30TO59_TTW","B08303_60PLUS_TTW"];
-                var pLook = ["B19001_LT15","B19001_15TO25","B19001_25TO35","B19001_35TO45","B19001_45TO60","B19001EST12","B19001EST13","B19001EST14","B19001EST15","B19001_GT150"]
+                //var pLook = ["B19001_LT15","B19001_15TO25","B19001_25TO35","B19001_35TO45","B19001_45TO60","B19001EST12","B19001EST13","B19001EST14","B19001EST15","B19001_GT150"]
+                var pLook = ["B19001_LT15_PCT","B19001_15TO25_PCT","B19001_25TO35_PCT","B19001_35TO45_PCT","B19001_45TO60_PCT","B19001EST12_PCT","B19001EST13_PCT","B19001EST14_PCT","B19001EST15_PCT","B19001_GT150_PCT"]
                 var poverty = [];
                 // education vars
-                var eLook = ["B20004EST2","B20004EST3","B20004EST4","B20004EST5","B20004EST6"];
+                //var eLook = ["B20004EST2","B20004EST3","B20004EST4","B20004EST5","B20004EST6"];
+                var eLook = ["B23006EST13_PCT","B23006EST20_PCT","B23006EST27_PCT","B23006EST6_PCT"];
+                //{"Field":"B23006EST13","Alias":"Population ages 25 to 64 Civilian Employed having High School Graduate education"},
+                //{"Field":"B23006EST20","Alias":"Population ages 25 to 64 Civilian Employed having Some College or Associate's Degree"},
+                //{"Field":"B23006EST27","Alias":"Population ages 25 to 64 Civilian Employed having Bachelor's degree or higher"},
+                //{"Field":"B23006EST6","Alias":"Population ages 25 to 64 Civilian Employed having Less than High School education"},
+
                 var education = [];
+
+                console.log(travel)
 
                 $.each(data.features[0].properties,function(index, value) {
                     $.each(socio,function(si, sv) {
@@ -537,39 +546,24 @@ $( "#goBtn" ).click(function() {
                 //    html: sdata.join( "" )
                 //}).appendTo( "#socio" );
 
-
-                //try{
-                //    visualization.data(travel).draw();
-                //    eduVisualization.data(education).draw();
-                //    povVisualization.data(poverty).draw();
-                //} catch(err) {
-                //    visualization.data(travel).draw();
-                //    eduVisualization.data(education).draw();
-                //    povVisualization.data(poverty).draw();
-                //
-                //}
                 chComm.load({
                     json: travel,
                     keys: {
                         value: ['total count']
                     }
                 });
-
-
                 chEdu.load({
                     json: education,
                     keys: {
                         value: ['total count']
                     }
                 });
-
                 chPov.load({
                     json: poverty,
                     keys: {
                         value: ['total count']
                     }
                 });
-
             });
 
 
@@ -743,28 +737,28 @@ function makeGraphs(){
 
 
 var dummyD = [
-    {"groups":"Total Workers Traveling to Work Less than 30 minutes","name":"Workers","total count":1306},
-    {"groups":"Total Workers Traveling to Work 30 to 59 minutes","name":"Workers","total count":1092},
-    {"groups":"Total Workers Traveling to Work 60 or more minutes","name":"Workers","total count":107}
+    {"groups":"Less than 30 minutes","name":"Workers","total count":1306},
+    {"groups":"30 to 59 minutes","name":"Workers","total count":1092},
+    {"groups":"60 or more minutes","name":"Workers","total count":107}
 ];
 var EdummyD = [
-    {"groups":"Less than High School education","name":"Residents","total count":null},
-    {"groups":"High school graduate education","name":"Residents","total count":null},
-    {"groups":"Some college or associate's degree","name":"Residents","total count":57986},
-    {"groups":"Bachelor's degree","name":"Residents","total count":63720},
+    {"groups":"Less than High School","name":"Residents","total count":null},
+    {"groups":"High school graduate","name":"Residents","total count":null},
+    {"groups":"Some college or associate's","name":"Residents","total count":57986},
+    {"groups":"Bachelor's or higher","name":"Residents","total count":63720},
     {"groups":"Graduate or professional degree","name":"Residents","total count":131515}
 ];
 var PdummyD = [
-    {"groups":"<$14.9k","name":"Workers","total count":68},
-    {"groups":"$15k-$24.9k","name":"Workers","total count":14},
-    {"groups":"$25k-$34.9k","name":"Workers","total count":58},
-    {"groups":"$35k-$44.9k","name":"Workers","total count":48},
-    {"groups":"$45k-$59.9k","name":"Workers","total count":90},
-    {"groups":"$60k- $74.9k","name":"Workers","total count":77},
-    {"groups":"$75k-$99.9k","name":"Workers","total count":83},
-    {"groups":"$100k-$124.9k","name":"Workers","total count":161},
-    {"groups":"$125k-$149.9k","name":"Workers","total count":139},
-    {"groups":">$150k","name":"Workers","total count":1349}
+    {"groups":"<$14k","name":"Workers","total count":68},
+    {"groups":"$15k-$24k","name":"Workers","total count":14},
+    {"groups":"$25k-$34k","name":"Workers","total count":58},
+    {"groups":"$35k-$44k","name":"Workers","total count":48},
+    {"groups":"$45k-$59k","name":"Workers","total count":90},
+    {"groups":"$60k-$74k","name":"Workers","total count":77},
+    {"groups":"$75k-$99k","name":"Workers","total count":83},
+    {"groups":"$100k-$124k","name":"Workers","total count":161},
+    {"groups":"$125k-$149k","name":"Workers","total count":139},
+    {"groups":"$150k+","name":"Workers","total count":1349}
 ];
 var EthdummyD = [
     {"groups":"White","name":"Population","total count":4689},
@@ -797,6 +791,14 @@ var chComm = c3.generate({
     axis: {
         x: {
             type: 'category'
+        },
+        y: {
+            tick: {
+                format: function(d){
+                    //d3.format(",%")
+                    return d+"%"
+                }
+            }
         }
     },
     bar: {
@@ -806,6 +808,9 @@ var chComm = c3.generate({
     },
     legend: {
         show: false
+    },
+    size: {
+        width: 448
     }
 });
 
@@ -825,6 +830,14 @@ var chEdu = c3.generate({
     axis: {
         x: {
             type: 'category'
+        },
+        y: {
+            tick: {
+                format: function(d){
+                    //d3.format(",%")
+                    return d+"%"
+                }
+            }
         }
     },
     bar: {
@@ -834,6 +847,9 @@ var chEdu = c3.generate({
     },
     legend: {
         show: false
+    },
+    size: {
+        width: 448
     }
 });
 
@@ -853,6 +869,14 @@ var chPov = c3.generate({
     axis: {
         x: {
             type: 'category'
+        },
+        y: {
+            tick: {
+                format: function(d){
+                    //d3.format(",%")
+                    return d+"%"
+                }
+            }
         }
     },
     bar: {
@@ -862,6 +886,9 @@ var chPov = c3.generate({
     },
     legend: {
         show: false
+    },
+    size: {
+        width: 448
     }
 });
 
@@ -890,6 +917,9 @@ var chEth = c3.generate({
     },
     legend: {
         show: false
+    },
+    size: {
+        width: 448
     }
 });
 
@@ -918,6 +948,9 @@ var chAge = c3.generate({
     },
     legend: {
         show: false
+    },
+    size: {
+        width: 448
     }
 });
 

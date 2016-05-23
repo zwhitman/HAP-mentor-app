@@ -9,10 +9,11 @@ var socio =
         {"Field":"B08013EST1","Alias":"Aggregate Travel time to work in minutes"},
         //travel time 'Total Workers Traveling to Work'
         {"Field":"B08303_30MINUS_TTW","Alias":"Total Workers Traveling to Work Less than 30 minutes"},
+        {"Field":"B08303_30MINUS_TTW_PCT","Alias":"Total Workers Traveling to Work Less than 30 minutes"},
         {"Field":"B08303_30TO59_TTW","Alias":"Total Workers Traveling to Work 30 to 59 minutes"},
-        //{"Field":"B08303_30TO59_TTW_PCT","Alias":"Total Workers Traveling to Work 30 to 59 minutes as a %"},
+        {"Field":"B08303_30TO59_TTW_PCT","Alias":"Total Workers Traveling to Work 30 to 59 minutes as a %"},
         {"Field":"B08303_60PLUS_TTW","Alias":"Total Workers Traveling to Work 60 or more minutes"},
-        //{"Field":"B08303_60PLUS_TTW_PCT","Alias":"Total Workers Traveling to Work 60 or more minutes as a %"},
+        {"Field":"B08303_60PLUS_TTW_PCT","Alias":"Total Workers Traveling to Work 60 or more minutes as a %"},
         {"Field":"B08303EST1","Alias":"Total Workers Traveling to Work"},
         {"Field":"B17019_OWN","Alias":"Families with Income in the past 12 months below poverty level: Owner Occupied"},
         {"Field":"B17019_OWN_PCT","Alias":"Families with Income in the past 12 months below poverty level: Owner Occupied as a %"},
@@ -76,30 +77,39 @@ var socio =
         {"Field":"B23001_UE_ABOVE64_PCT","Alias":"65+ Unemployment Rate"},
         {"Field":"B23001_UE_PCT","Alias":"Overall Unemployment Rate"},
         {"Field":"B23006EST1","Alias":"Population ages 25 to 64"},
+
         {"Field":"B23006EST13","Alias":"Population ages 25 to 64 Civilian Employed having High School Graduate education"},
+
         {"Field":"B23006EST13_PCT","Alias":"Population ages 25 to 64 Civilian Employed having High School Graduate education as a %"},
         {"Field":"B23006EST14","Alias":"Population ages 25 to 64 Unemployed having High School Graduate education"},
         {"Field":"B23006EST14_PCT","Alias":"Population ages 25 to 64 Unemployed having High School Graduate education as a %"},
         {"Field":"B23006EST15","Alias":"Population ages 25 to 64 Not in Labor Force having High School Graduate education"},
         {"Field":"B23006EST15_PCT","Alias":"Population ages 25 to 64 Not in Labor Force having High School Graduate education as a %"},
+
         {"Field":"B23006EST20","Alias":"Population ages 25 to 64 Civilian Employed having Some College or Associate's Degree"},
+
         {"Field":"B23006EST20_PCT","Alias":"Population ages 25 to 64 Civilian Employed having Some College or Associate's Degree as a %"},
         {"Field":"B23006EST21","Alias":"Population ages 25 to 64 Unemployed having Some College or Associate's Degree"},
         {"Field":"B23006EST21_PCT","Alias":"Population ages 25 to 64 Unemployed having Some College or Associate's Degree as a %"},
         {"Field":"B23006EST22","Alias":"Population ages 25 to 64 Not in Labor Force having Some College or Associate's Degree"},
         {"Field":"B23006EST22_PCT","Alias":"Population ages 25 to 64 Not in Labor Force having Some College or Associate's Degree as a %"},
+
         {"Field":"B23006EST27","Alias":"Population ages 25 to 64 Civilian Employed having Bachelor's degree or higher"},
+
         {"Field":"B23006EST27_PCT","Alias":"Population ages 25 to 64 Civilian Employed having Bachelor's degree or higher as a %"},
         {"Field":"B23006EST28","Alias":"Population ages 25 to 64 Unemployed having Bachelor's degree or higher"},
         {"Field":"B23006EST28_PCT","Alias":"Population ages 25 to 64 Unemployed having Bachelor's degree or higher as a %"},
         {"Field":"B23006EST29","Alias":"Population ages 25 to 64 Not in Labor Force having Bachelor's degree or higher"},
         {"Field":"B23006EST29_PCT","Alias":"Population ages 25 to 64 Not in Labor Force having Bachelor's degree or higher as a %"},
+
         {"Field":"B23006EST6","Alias":"Population ages 25 to 64 Civilian Employed having Less than High School education"},
+
         {"Field":"B23006EST6_PCT","Alias":"Population ages 25 to 64 Civilian Employed having Less than High School education as a %"},
         {"Field":"B23006EST7","Alias":"Population ages 25 to 64 Unemployed having Less than High School education"},
         {"Field":"B23006EST7_PCT","Alias":"Population ages 25 to 64 Unemployed having Less than High School education as a %"},
         {"Field":"B23006EST8","Alias":"Population ages 25 to 64 Not in Labor Force having Less than High School education"},
         {"Field":"B23006EST8_PCT","Alias":"Population ages 25 to 64 Not in Labor Force having Less than High School education as a %"},
+
         {"Field":"B24021EST17","Alias":"Service occupations:"},
         {"Field":"B24021EST2","Alias":"Management, professional, and related occupations:"},
         {"Field":"B24021EST25","Alias":"Sales and office occupations:"},
