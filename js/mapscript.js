@@ -788,6 +788,7 @@ var chComm = c3.generate({
             'total count':'#6fbb44'
         }
     },
+
     axis: {
         x: {
             type: 'category'
