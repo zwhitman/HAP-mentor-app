@@ -94,6 +94,19 @@ a{
 #sideRContent {
 }
 
+.addInfo-list a .demo-card-wide{
+    padding:10px;
+    font-size:1.5em;
+    background-color:#6fbb44;
+    color: white;
+}
+.addInfo-list a .demo-card-wide span{
+    margin-right:10px
+}
+.addInfo-list a:hover{
+    text-decoration:none
+}
+
 /*loader*/
 .pace {
     -webkit-pointer-events: none;

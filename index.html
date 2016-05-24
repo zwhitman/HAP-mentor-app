@@ -48,7 +48,8 @@
         </div>
         <div class="mdl-card__supporting-text">
             This is Higher Achievement's mentor finder application. It's designed to help you figure out where to canvas
-            and recruit new mentors.
+            and recruit new mentors. Use this sidepanel to add, query, and remove the potential recruiting locations. Try hitting
+            the 'GO' button at the bottom to add all the points.
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="$('#intro').slideUp()">
@@ -102,7 +103,7 @@
     <br>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <button id='goBtn' style="width:70%;border-radius:0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Go</button>
-        <button id='clearBtn' style="width:30%;border-radius:0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Clear</button>
+        <button id='clearBtn' style="width:30%;border-radius:0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span></button>
     </div>
 
 </div>
@@ -116,27 +117,32 @@
     <div id="sideRContentContain">
         <div id="sideRContentWrap" class="demo-card-wide mdl-shadow--2dp" style="width:100%">
             <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Additional Info</h2>
+                <h2 class="mdl-card__title-text" >Additional Info</h2>
             </div>
-            <div id="sideRContent" class="mdl-card__supporting-text" style="width:100%">
-            <!--<div id="sideRContent" class="text-left demo-card-wide mdl-shadow&#45;&#45;2dp"></div>-->
+            <div id="sideRContent" class="mdl-card__supporting-text text-left" style="width:100%">
             </div>
         </div>
 
         <div id="recContent"></div>
         <br>
-        <!--<hr style="width:100%">-->
-        <!--<h3>Recommendation</h3>-->
         <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Recommendations</h2>
             </div>
             <div id="recs" class="mdl-card__supporting-text text-left" style="width:100%">
-                <!--<div id="sideRContent" class="text-left demo-card-wide mdl-shadow&#45;&#45;2dp"></div>-->
             </div>
         </div>
         <br>
-        <h3>Census Data</h3>
+        <div class="demo-card-wide mdl-shadow--2dp" style="width:100%">
+            <div class="mdl-card__title">
+                <h2 id="wTitle" class="mdl-card__title-text"></h2>
+            </div>
+            <img id="rHead" style="position:absolute;right:15px;margin-top:-48px" class="img img-responsive" src="">
+            <div id="wInfo" class="mdl-card__supporting-text text-left" style="width:100%">
+            </div>
+        </div>
+        <br>
+        <!--<h3>Census Data</h3>-->
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified" role="tablist">
             <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Demographics</a></li>
