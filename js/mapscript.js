@@ -379,7 +379,7 @@ $( "#goBtn" ).click(function() {
                         genBlurb = " We're estimating that mentors from this area will probably be men"
                     }
 
-                    recBlurb = recBlurb + genBlurb
+                    recBlurb = recBlurb + genBlurb;
 
                     if(feature.properties.bayseagege<30){
                         ageBlurb = "the under 30 crowd"
@@ -418,7 +418,7 @@ $( "#goBtn" ).click(function() {
 
                     recBlurb = recBlurb + schBlurb;
 
-                    if(feature.properties.msDIff1 > 0){
+                    if(feature.properties.msDIff1 < 0){
                         demBlurb = " </p><p>Overall, we're predicting that we have strong mentor representation in this area."
 
                     } else {
@@ -436,42 +436,65 @@ $( "#goBtn" ).click(function() {
                     }).appendTo( "#recs" );
 
                     //$('#sideRTitle').text(feature.properties.NAME);
+                    var sV = 'http://maps.google.com/maps?q=&layer=c&cbll='+ e.lngLat.lat+','+ e.lngLat.lng
                     $('#sideRTitle').text(props.Name);
-                    var attrList = []
+                    var attrList = [];
                     for(i in props){
                         if(i == "Website" || i == "url" && props[i]!=""){
                             if(props[i].search("www")!=-1 || props[i].search("http")!=-1){
                                 //attrList.push("<div><a target='_blank' href='" + props[i]+"'>Website</a></div>")
-                                attrList.push("<a target='_blank' href='" + props[i] + "'><div class='demo-card-wide mdl-shadow--2dp' style='padding:10px;font-size:2em'><span class='glyphicon glyphicon-globe' aria-hidden='true'></span> Website</div></a><br>")
+                                attrList.push("<a target='_blank' href='" + props[i] + "'><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-globe' aria-hidden='true'></span> Website</div></a><br>")
                             }
                         } else if(i == "Address" || i == "address" && props[i]!="") {
-                            var gAd = 'https://www.google.com/maps/place/'+props[i]
-                            attrList.push("<a target='_blank' href='" + gAd + "'><div class='demo-card-wide mdl-shadow--2dp' style='padding:10px;font-size:2em'><span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
+
+                            //var gAd = 'https://www.google.com/maps/place/'+props[i]
+                            var gAd = 'https://www.google.com/maps/dir/Current+Location/'+props[i]
+                            attrList.push("<a target='_blank' href='" + gAd + "'><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
 
                             var pAd = 'http://en.parkopedia.com/parking/'+props[i]+', Washington DC'
-                            attrList.push("<a target='_blank' href='" + pAd + "'><div class='demo-card-wide mdl-shadow--2dp' style='padding:10px;font-size:2em'><span class='glyphicon glyphicon-road' aria-hidden='true'></span> Nearby Parking</div></a><br>")
+                            attrList.push("<a target='_blank' href='" + pAd + "'><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-road' aria-hidden='true'></span> Nearby Parking</div></a><br>")
                         }
                         else if(i == 'Phone' || i == 'tel') {
                             //attrList.push("<div><a target='_blank' href='tel:" + props[i]+"'>Phone</a></div>")
-                            attrList.push("<a target='_blank' href='tel:" + props[i] + "'><div class='demo-card-wide mdl-shadow--2dp' style='padding:10px;font-size:2em'><span class='glyphicon glyphicon-earphone' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
+                            attrList.push("<a target='_blank' href='tel:" + props[i] + "'><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-earphone' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
                         }
                         else if(i == 'Religion') {
                             //attrList.push("<div><a target='_blank' href='tel:" + props[i]+"'>Phone</a></div>")
-                            attrList.push("<a><div class='demo-card-wide mdl-shadow--2dp' style='padding:10px;font-size:2em'><span class='glyphicon glyphicon-home' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
+                            attrList.push("<a><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-home' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
                         }
                         else if(i != 'Name') {
                             attrList.push("<div>" + i+": "+ props[i] + "</div>")
                         }
                     }
+                    attrList.push("<a href='"+sV+"' target='_blank'><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-picture' aria-hidden='true'></span> StreetView</div></a><br>")
 
                     $( "<div/>", {
-                        "class": "my-new-list",
+                        "class": "addInfo-list",
                         html: attrList.join( "" )
                     }).appendTo( "#sideRContent" );
                     renderSide(feature.geometry.coordinates[1],feature.geometry.coordinates[0])
 
-                    console.log(e.lngLat.lng)
-                    console.log(e.lngLat.lat)
+
+                    // ward info section
+                    $('#wTitle').empty()
+                    $('#wTitle').text(feature.properties.LABEL + ' Representation');
+                    var rHeadimg = 'images/'+feature.properties.LABEL+'.jpg';
+                    document.getElementById("rHead").src=rHeadimg;
+
+                    $('#wInfo').empty()
+                    var wardData = '<div>' +
+                            '<b style="font-size:1.5em">'+feature.properties.REP_NAME+'</b>' +
+                            '<p><a href="tel:'+feature.properties.REP_PHONE+'"><span class="glyphicon glyphicon-phone" aria-hidden="true" style="margin-right:5px"></span>'+feature.properties.REP_PHONE+'</a><br>' +
+                            '<a href="mailto:'+feature.properties.REP_EMAIL+'"><span class="glyphicon glyphicon-envelope" aria-hidden="true" style="margin-right:5px"></span>'+feature.properties.REP_EMAIL+'</a></p>' +
+                            //'<li>Address: '+feature.properties.REP_OFFICE+'</li>' +
+                        '</div>'
+
+                    $( "<div/>", {
+                        "class": "addInfo-list",
+                        html: wardData
+                    }).appendTo( "#wInfo" );
+
+
                 }
 
             } catch(err){
@@ -788,7 +811,6 @@ var chComm = c3.generate({
             'total count':'#6fbb44'
         }
     },
-
     axis: {
         x: {
             type: 'category'
