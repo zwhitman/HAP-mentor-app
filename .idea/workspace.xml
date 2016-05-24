@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0205fd53-2850-4a7b-b963-aad9aaaca176" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/worship.json" afterPath="$PROJECT_DIR$/data/worship.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/mapscript.js" afterPath="$PROJECT_DIR$/js/mapscript.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="mentor_app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
-              <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.7846154">
+              <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -100,10 +99,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mapscript.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mapscript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mapscript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6778017">
+            <state vertical-scroll-proportion="0.0">
               <caret line="523" column="12" selection-start-line="523" selection-start-column="12" selection-end-line="523" selection-end-column="12" />
               <folding>
                 <marker date="1464113274083" expanded="true" signature="17103:17194" placeholder="..." />
@@ -136,8 +135,8 @@
       <file leaf-file-name="mapStyle.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/mapStyle.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -166,9 +165,9 @@
         <option value="$PROJECT_DIR$/js/pace.js" />
         <option value="$PROJECT_DIR$/data/socio_lookup.js" />
         <option value="$PROJECT_DIR$/css/mapStyle.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/data/worship.json" />
         <option value="$PROJECT_DIR$/js/mapscript.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -410,7 +409,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464111264283</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added metro line styling">
+      <created>1464113428917</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1464113428917</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -426,7 +431,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39958158" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -908,18 +913,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/worship.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="366" column="0" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mapscript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="523" column="12" selection-start-line="523" selection-start-column="12" selection-end-line="523" selection-end-column="12" />
+          <folding>
+            <marker date="1464113274083" expanded="true" signature="17103:17194" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="17331:17410" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="17781:17803" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="17781:17815" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="17870:17929" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="17882:17929" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="17894:17907" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="17894:17929" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="19106:19121" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="19307:19320" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="19307:19323" placeholder="..." />
+            <marker date="1464113274083" expanded="true" signature="19524:19540" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/mapStyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.7846154">
+          <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -955,35 +989,6 @@
             <element signature="n#style#0;n#div#2;n#div#1;n#div#4;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#div#4;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#4;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/worship.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0">
-          <caret line="366" column="0" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/mapscript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6778017">
-          <caret line="523" column="12" selection-start-line="523" selection-start-column="12" selection-end-line="523" selection-end-column="12" />
-          <folding>
-            <marker date="1464113274083" expanded="true" signature="17103:17194" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="17331:17410" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="17781:17803" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="17781:17815" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="17870:17929" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="17882:17929" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="17894:17907" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="17894:17929" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="19106:19121" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="19307:19320" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="19307:19323" placeholder="..." />
-            <marker date="1464113274083" expanded="true" signature="19524:19540" placeholder="..." />
           </folding>
         </state>
       </provider>
