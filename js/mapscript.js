@@ -184,7 +184,7 @@ $( "#goBtn" ).click(function() {
         poiControl.getValue(),
         wardControl.getValue()
     );
-    console.log(query)
+    //console.log(query)
     gquery = query
     $.getJSON( "data/worship.json", function( data ) {
         var placeholder = [];
@@ -289,7 +289,7 @@ $( "#goBtn" ).click(function() {
 
         delete data.features;
         data.features = placeholder;
-        console.log(data)
+        //console.log(data)
 
         global = data;
         map.addSource("worship", {
@@ -351,7 +351,7 @@ $( "#goBtn" ).click(function() {
 
 
                     // recommendation logic
-                    console.log(feature.properties)
+                    //console.log(feature.properties)
 
                     var recBlurb,
                         ageBlurb,
@@ -462,9 +462,23 @@ $( "#goBtn" ).click(function() {
                             //attrList.push("<div><a target='_blank' href='tel:" + props[i]+"'>Phone</a></div>")
                             attrList.push("<a><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-home' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
                         }
-                        else if(i != 'Name') {
-                            attrList.push("<div>" + i+": "+ props[i] + "</div>")
+                        else if(i == 'Line') {
+                            //attrList.push("<div><a target='_blank' href='tel:" + props[i]+"'>Phone</a></div>")
+                            var lColor = props[i].split(', ')
+                            var mColorDivs = '';
+                            for(i in lColor){
+                                if(lColor[i]=='yellow'){
+                                    mColorDivs = mColorDivs+'<div style="color:black;background-color:'+lColor[i]+';text-transform:uppercase;padding:5px;flex-grow:1">'+lColor[i]+'</div>'
+                                } else {
+                                    mColorDivs = mColorDivs+'<div style="background-color:'+lColor[i]+';text-transform:uppercase;padding:5px;flex-grow:1">'+lColor[i]+'</div>'
+                                }
+                            }
+                            //attrList.push("<a><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-home' aria-hidden='true'></span> "+props[i]+"</div></a><br>")
+                            attrList.push("<a><div class='demo-card-wide mdl-shadow--2dp' style='background-color:white;color:green'>Metro Services</span><div class='text-center' style='color:white;margin:10px;display:flex;justify-content:center'>"+mColorDivs+"</div></div></a><br>")
                         }
+                        //else if(i != 'Name') {
+                        //    attrList.push("<div>" + i+": "+ props[i] + "</div>")
+                        //}
                     }
                     attrList.push("<a href='"+sV+"' target='_blank'><div class='demo-card-wide mdl-shadow--2dp'><span class='glyphicon glyphicon-picture' aria-hidden='true'></span> StreetView</div></a><br>")
 
@@ -540,7 +554,7 @@ $( "#goBtn" ).click(function() {
 
                 var education = [];
 
-                console.log(travel)
+                //console.log(travel)
 
                 $.each(data.features[0].properties,function(index, value) {
                     $.each(socio,function(si, sv) {
