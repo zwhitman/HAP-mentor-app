@@ -362,15 +362,15 @@ $( "#goBtn" ).click(function() {
 
                     if(feature.properties.bayesblack > feature.properties.bayeswhite){
                         if(feature.properties.bayesblack>0.5){
-                            recBlurb = "This location is a good location for black mentors."
+                            recBlurb = "Our model predicts that this location will be most successful in recruiting black mentors."
                         } else {
-                            recBlurb = "This area isn't strong predictor of any race, but it's generally a better location to recruit black mentors."
+                            recBlurb = "This location isn't a strong predictor of any one race, but the model leans slightly more favorably in recruiting black mentors."
                         }
                     } else {
                         if(feature.properties.bayeswhite>0.5){
-                            recBlurb = "This area is a good location for white mentors."
+                            recBlurb = "Our model predicts that this location will be most successful in recruiting white mentors."
                         } else {
-                            recBlurb = "This area isn't strong predictor of any race, but it's generally a better location to recruit white mentors."
+                            recBlurb = "This location isn't a strong predictor of any one race, but the model leans slightly more favorably in recruiting white mentors."
                         }
                     }
                     if(feature.properties.malevfemal<.5){
