@@ -38,7 +38,8 @@
 <div id="loader">
     <div id="loaderIMG"></div>
 </div>
-<div style='width:400px;position:absolute;left:0;padding:20px' class="sidebar text-center">
+<div style='' class="sidebar text-center">
+    <button id='sCButton' style="" class="" onclick="$('.sidebar').css('left','-500px')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
     <img class='img img-responsive' src="images/logo.png">
     <!--<h1>higher achievement</h1>-->
     <br>
@@ -47,10 +48,17 @@
             <h2 class="mdl-card__title-text">Welcome!</h2>
         </div>
         <div class="mdl-card__supporting-text">
-            This is Higher Achievement's mentor finder application. It's designed to help you figure out where to canvas
-            and recruit new mentors. Use this sidepanel to add, query, and remove the potential recruiting locations. Try hitting
-            the 'GO' button at the bottom to add all the points.
+            <p>
+                This is Higher Achievement's mentor finder application. It's designed to help you figure out where to canvas
+                and recruit new mentors. Use this sidepanel to add, query, and remove the potential recruiting locations. Try hitting
+                the 'GO' button at the bottom to add all the points.
+            </p>
+            <p>
+                We want to hear from you so if you see anything you'd like changed, or have an idea on how to make this thing
+                better, hit the button below to send us a comment!
+            </p>
         </div>
+        <button id='commentsBtn' style="width:50%;border-radius:0;margin-bottom:20px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="window.open('mailto:zwhitman@deloitte.com?subject=Higher Ed App Comment')">Comments</button>
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="$('#intro').slideUp()">
                 GOT IT
@@ -105,12 +113,14 @@
         <button id='goBtn' style="width:70%;border-radius:0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Go</button>
         <button id='clearBtn' style="width:28%;border-radius:0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span></button>
     </div>
+    <br>
 
 </div>
-<div style="width:calc(100vw - 400px);position:fixed;left:400px" class="mapcontain">
+<div style="" class="mapcontain">
         <div id='map'></div>
 </div>
-<div id="sideRight" class="text-center" style="padding:10px;overflow-x:hidden">
+<button id='sButton' style="" class="" onclick="$('.sidebar').css('left',0)"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+<div id="sideRight" class="text-center" style="">
     <div class="col-xs-12">
         <h3 id="sideRTitle"></h3>
     </div>
@@ -238,7 +248,6 @@
 <!--reference tables-->
 <script src='data/socio_lookup.js'></script> <!--var = socio -->
 <script src='data/demo_lookup.js'></script> <!--var = demo -->
-<script src='data/test1.js'></script> <!--var = socio -->
 
 <!--custom map script-->
 <script src='js/mapscript.js'></script>
