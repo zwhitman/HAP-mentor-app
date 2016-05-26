@@ -176,7 +176,7 @@ var gquery;
 var ll;
 //render button
 $( "#goBtn" ).click(function() {
-    clear()
+    clear();
     var query = new Query(
         genControl.getValue(),
         ethControl.getValue(),
@@ -360,6 +360,8 @@ $( "#goBtn" ).click(function() {
                         schBlurb,
                         demBlurb;
 
+
+                    console.log(feature)
                     if(feature.properties.bayesblack > feature.properties.bayeswhite){
                         if(feature.properties.bayesblack>0.5){
                             recBlurb = "Our model predicts that this location will be most successful in recruiting black mentors."
@@ -491,7 +493,7 @@ $( "#goBtn" ).click(function() {
 
                     // ward info section
                     $('#wTitle').empty()
-                    $('#wTitle').text(feature.properties.LABEL + ' Representation');
+                    $('#wTitle').text(feature.properties.LABEL + ' Rep');
                     var rHeadimg = 'images/'+feature.properties.LABEL+'.jpg';
                     document.getElementById("rHead").src=rHeadimg;
 
@@ -510,6 +512,7 @@ $( "#goBtn" ).click(function() {
 
 
                 }
+
 
             } catch(err){
                 console.log(err)
@@ -697,6 +700,9 @@ $( "#goBtn" ).click(function() {
             map.getCanvas().style.cursor = (features.length || clusterFeatures.length) ? 'pointer' : '';
         });
     });
+    if(window.innerWidth <= 500){
+        $('.sidebar').css('left','-500px')
+    };
 
 });
 
@@ -772,6 +778,12 @@ function makeGraphs(){
 
 }
 
+var barWidth;
+if(window.innerWidth <= 500){
+    barWidth = window.innerWidth-50
+} else {
+    barWidth = 448
+}
 
 var dummyD = [
     {"groups":"Less than 30 minutes","name":"Workers","total count":1306},
@@ -847,7 +859,7 @@ var chComm = c3.generate({
         show: false
     },
     size: {
-        width: 448
+        width: barWidth
     }
 });
 
@@ -886,7 +898,7 @@ var chEdu = c3.generate({
         show: false
     },
     size: {
-        width: 448
+        width: barWidth
     }
 });
 
@@ -925,7 +937,7 @@ var chPov = c3.generate({
         show: false
     },
     size: {
-        width: 448
+        width: barWidth
     }
 });
 
@@ -956,7 +968,7 @@ var chEth = c3.generate({
         show: false
     },
     size: {
-        width: 448
+        width: barWidth
     }
 });
 
@@ -987,7 +999,7 @@ var chAge = c3.generate({
         show: false
     },
     size: {
-        width: 448
+        width: barWidth
     }
 });
 
