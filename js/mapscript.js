@@ -1006,3 +1006,9 @@ var chAge = c3.generate({
 map.on('load', function () {
     $('#loader').fadeOut()
 });
+
+$( window ).resize(function() {
+    if(window.innerWidth > 500){
+        $('.sidebar').css('left','0')
+    };
+});
